@@ -17,11 +17,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/nama', function () {
-    return ('Bayu aditya');
+    return ('Afifah Fauziah');
 });
 Route::get('/nim', function () {
-    return ('21.31.0002');
+    return ('21.31.0004');
 });
 Route::get('index', function () {
     return view('layouts/index');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/blog', function () {
+    return view('blog',[
+        "nama" => "Afifah Fauziah",
+        "email" => "afifahfauziah251@gmail.com",
+        "gambar" => "me.jpg"
+    ]);
 });
