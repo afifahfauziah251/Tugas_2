@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Artikelcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('/nama', function () {
     return ('Afifah Fauziah');
@@ -34,10 +35,14 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/blog', function () {
-    return view('blog',[
-        "nama" => "Afifah Fauziah",
-        "email" => "afifahfauziah251@gmail.com",
-        "gambar" => "me.jpg"
-    ]);
-});
+Route::get('/blog', [Artikelcontroller::class, 'index'])->name('artikel.index');
+Route::get('/detail/{id}', [Artikelcontroller::class, 'detail'])->name('artikel.detail');
+
+// Route::get('/blog', function () {
+//     return view('blog',[
+//         "nama" => "Afifah Fauziah",
+//         "email" => "afifahfauziah251@gmail.com",
+//         "gambar" => "me.jpg"
+//     ]);
+// });
+
