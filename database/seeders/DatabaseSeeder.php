@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use illuminate\Support\Facades\DB;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        DB::table('artikel')->insert([
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "Judul Post Pertama",
+            "author" => "Afifah Fauziah",
+            "body" => "teorem ipsum sitnjsfnoj kjfafoijad"
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "Judul Post Kedua",
+            "author" => "Afifah Fauziah",
+            "body" => "teorem ipsum sitnjsfnoj kjfafoijad"
+        ]
+        ]);
     }
 }

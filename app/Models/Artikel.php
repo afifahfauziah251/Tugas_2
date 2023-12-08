@@ -9,4 +9,11 @@ class Artikel extends Model
 {
     protected $table='artikel';
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'body',
+        'author',
+    ];
+
 }

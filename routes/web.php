@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Artikelcontroller;
+use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 
 /*
@@ -37,14 +38,14 @@ Route::get('/about', function () {
 });
 
 
-// Route::get('/blog', [Artikelcontroller::class, 'index'])->name('artikel.index');
-// Route::get('/detail/{id}', [Artikelcontroller::class, 'detail'])->name('artikel.detail');
+Route::get('/blog', [Artikelcontroller::class, 'index'])->name('artikel.index');
+Route::get('/detail/{id}', [Artikelcontroller::class, 'detail'])->name('artikel.detail');
 
-Route::get('/blog', function () {
-    return view('blog', [
-        "title" => "blog"
-    ]);
-});
+// Route::get('/blog', function () {
+//     return view('blog', [
+//         "title" => "blog"
+//     ]);
+// });
 
 Route::get('/', function () {
     return view('home', [
@@ -52,26 +53,30 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blog2', function () {
-    return view('blog2', [
-        "title" => "post",
-        "posts" => blog::all()
-    ]);
-});
+// Route::get('/blog2', function () {
+//     return view('blog2', [
+//         "title" => "post",
+//         "posts" => blog::all()
+//     ]);
+// });
 
-Route::get('/blog2/{slug}', function ($slug) {
+// Route::get('/blog2/{slug}', function ($slug) {
 
-    return view('post', [
-        "title" => "Single Post",
-        "post" =>Blog::getBySlack($slug)
-    ]);
-});
+//     return view('post', [
+//         "title" => "Single Post",
+//         "post" =>Blog::getBySlack($slug)
+//     ]);
+// });
 
-Route::get('/blog', function () {
-    return view('blog',[
-        "nama" => "Afifah Fauziah",
-        "email" => "afifahfauziah251@gmail.com",
-        "gambar" => "me.jpg"
-    ]);
-});
+// Route::get('/blog', function () {
+//     return view('blog',[
+//         "nama" => "Afifah Fauziah",
+//         "email" => "afifahfauziah251@gmail.com",
+//         "gambar" => "me.jpg"
+//     ]);
+// });
+Route::get('/blog', [Artikelcontroller::class, 'index']);
+//halaman single post
 
+
+Route::resource('/post', BlogController::class);
